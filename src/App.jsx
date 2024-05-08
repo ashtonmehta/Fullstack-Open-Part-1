@@ -1,57 +1,26 @@
-const Header = (props) => {
-  return (
-    <h1>{props.course}</h1>
-  )
-}
+const Hello = ({ name, age}) => {
 
-const Part = ({ part }) => {
-  return (
-    <p>
-      {part.name} {part.exercises}
-    </p>
-  )
-}
+  const bornYear = () => new Date().getFullYear() - age
 
-const Content = ({ parts }) => {
   return (
-      parts.map(part => 
-        <Part key={part.name} part={part} />
-      )
-  )
-}
-
-const Total = (props) => {
-  return (
-    <p>Number of exercises {props.exercises}</p>
+    <div>
+      <p>Hello, {name}, you are {age} years old.</p>
+      <p>You were probably born in {bornYear()}</p>
+    </div>
   )
 }
 
 const App = () => {
-  const course = 'Half Stack application development'
-  const parts = [
-
-    {
-      name: 'Fundamentals of React',
-      exercises: 10
-    },
-    {
-      name: 'Using props to pass data',
-      exercises: 7
-    },
-    {
-      name: 'State of a component',
-      exercises: 14
-    },
-
-  ]
+  const name = 'Peter'
+  const age = 10
 
   return (
     <div>
-      <Header course={course}/>
-      <Content
-        parts={parts}
+      <h1>Greetings!</h1>
+      <Hello
+        name={name}
+        age={age}
       />
-      <Total exercises={parts.map(part => part.exercises).reduce((previousValue, currentValue) => previousValue + currentValue, 0)} />
     </div>
   )
 }
